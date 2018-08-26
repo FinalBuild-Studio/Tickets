@@ -37,7 +37,7 @@
                     </td>
                     <td style="width:85px;">
                       <select name="free" class="form-control" style="text-align: center">
-                        @for ($i = 0; $i <= $event->left; $i++)
+                        @for ($i = 0; $i <= $event->left && $i <= 3; $i++)
                           <option value="{{ $i }}">{{ $i }}</option>
                         @endfor
                       </select>
@@ -60,7 +60,7 @@
                       </td>
                       <td style="width:85px;">
                         <select name="crypto" class="form-control" style="text-align: center">
-                          @for ($i = 0; $i <= $event->left; $i++)
+                          @for ($i = 0; $i <= $event->left && $i <= 3; $i++)
                             <option value="{{ $i }}">{{ $i }}</option>
                           @endfor
                         </select>
