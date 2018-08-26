@@ -33,12 +33,16 @@
       .max-height {
         height: 100vh;
       }
+
+      .vertical {
+        margin-top: calc(50vh - 15vh - 1rem);
+      }
     </style>
   </head>
   <body>
     <div class="container text-center max-height max-width">
       @if (!$order)
-        <div class="row">
+        <div class="row vertical">
           <div class="col-md">
             <i class="fas fa-times s30 red"></i>
           </div>
@@ -49,7 +53,7 @@
           </div>
         </div>
       @elseif ($order->status === App\Order::INITIAL)
-        <div class="row">
+        <div class="row vertical">
           <div class="col-md">
             <i class="fas fa-times s30 red"></i>
           </div>
@@ -61,7 +65,7 @@
         </div>
       @else
         @if ($order->amount || !$order->event->price)
-          <div class="row">
+          <div class="row vertical">
             <div class="col-md">
               <i class="fas fa-check s30 green"></i>
             </div>
@@ -72,7 +76,7 @@
             </div>
           </div>
         @else
-          <div class="row">
+          <div class="row vertical">
             <div class="col-md">
               <i class="fas fa-exclamation-triangle s30 orange"></i>
             </div>
