@@ -27,7 +27,7 @@
                         現場票
                       </span>
                       <p class="ticket-descripton mb0 text-muted" property="description">
-                        到現場以現金支付
+                        到現場以現金支付新台幣 {{ $event->price }} 元
                       </p>
                     </td>
                     <td style="width:180px; text-align: right;">
