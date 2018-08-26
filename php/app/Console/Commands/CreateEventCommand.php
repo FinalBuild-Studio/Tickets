@@ -49,7 +49,8 @@ class CreateEventCommand extends Command
     "end_at": "",
     "max": 0,
     "price": 0,
-    "poster": ""
+    "poster": "",
+    "discount_rate": 0
 }
 EOD;
         mkdir($templatePath, 0777, true);

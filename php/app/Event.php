@@ -18,6 +18,7 @@ class Event extends Model
         'poster',
         'description',
         'template',
+        'discount_rate',
     ];
 
     protected $dates = [

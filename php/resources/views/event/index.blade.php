@@ -22,7 +22,7 @@
          </div>
          <div>
            <i class="fas fa-dollar-sign"></i>
-           <span> 一般: {{ $event->price }} NTD / 學生: {{ $event->price / 2 }} NTD </span>
+           <span> 一般: {{ $event->price }} NTD / 學生: {{ $event->price * (1 - $event->discount_rate) }} NTD </span>
          </div>
          <div style="padding-bottom: 8px;">
            <i class="fas fa-users"></i>

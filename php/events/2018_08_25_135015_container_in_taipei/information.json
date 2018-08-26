@@ -6,5 +6,6 @@
     "end_at": "2018-09-02 17:00:00",
     "max": 13,
     "price": 200,
-    "poster": "https://www.docker.com/sites/default/files/social/docker_facebook_share.png"
+    "poster": "https://www.docker.com/sites/default/files/social/docker_facebook_share.png",
+    "discount_rate": 0
 }
