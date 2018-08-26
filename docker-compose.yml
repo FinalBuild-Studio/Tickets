@@ -1,0 +1,52 @@
+version: "3"
+
+services:
+  php:
+    build:
+      context: .
+      dockerfile: Dockerfile-php
+    restart: always
+    env_file:
+      - ./.env
+    volumes:
+      - ./php:/src
+  db:
+    container_name: tickets-db
+    image: mariadb:10
+    restart: always
+    volumes:
+      - ./db:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=${DB_DATABASE}
+      - MYSQL_USER=${DB_USERNAME}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+      - MYSQL_RANDOM_ROOT_PASSWORD=true
+  web:
+    image: nginx:1.15.2-alpine
+    restart: always
+    ports:
+      - 80:80
+    depends_on:
+      - php
+      - db
+      - redis
+    volumes:
+      - ./php:/src
+      - ./web:/etc/nginx/conf.d
+  redis:
+    image: redis:4.0.11-alpine
+    restart: always
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile-php
+    restart: always
+    volumes:
+      - ./php:/src
+    working_dir: /src
+    env_file:
+      - ./.env
+    entrypoint:
+      - php
+      - artisan
+      - queue:work
