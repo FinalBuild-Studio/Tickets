@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Mail;
 use App\Order;
 use App\Mail\OrderConfirmed;
+use App\Exceptions\GeneralException;
 use Illuminate\Http\Request;
 
 class PayController extends Controller
@@ -29,6 +30,14 @@ class PayController extends Controller
 
         $name  = $request->input('name');
         $email = $request->input('email');
+
+        $oldOrder = Order::where('event_id', '=', $order->event->id)
+            ->where('email', '=', $email)
+            ->first();
+
+        if ($oldOrder) {
+            throw new GeneralException(403, '不得多次購買');
+        }
 
         $order->name  = $name;
         $order->email = $email;

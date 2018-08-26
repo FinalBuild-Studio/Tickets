@@ -23,6 +23,11 @@ class CheckoutController extends Controller
             ->sum('total');
 
         $total = ($crypto + $free);
+
+        if ($total > 3) {
+            throw new GeneralException(400, '一次限額三張票');
+        }
+
         if ($total > ($event->max - $total)) {
             throw new GeneralException(400, '活動剩餘人數不足');
         }
