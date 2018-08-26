@@ -21,8 +21,8 @@
            <span>{{ $event->start_at ? $event->start_at->format('Y-m-d (D)') : 'N/A' }}</span>
          </div>
          <div>
-           <i class="fas fa-dollar-sign"></i>
-           <span>{{ $event->price }} NTD</span>
+           <i class="fal fa-usd-circle"></i>
+           <span>一般: {{ $event->price }} NTD / 學生: {{ $event->price / 2 }} NTD</span>
          </div>
          <div style="padding-bottom: 8px;">
            <i class="fas fa-users"></i>
