@@ -41,7 +41,11 @@
         <div class="col-md-12">
           <div class="content">
             <div class="tickets_table_wrap">
-             @if ($event->left)
+              @if ($event->expired)
+               <div style="display:flex; align-items: center; justify-content: center;">
+                 <h4>報名已截止，請洽管理員</h4>
+               </div>
+              @elseif ($event->left)
               <table class="table">
                 <tbody>
                   <tr class="ticket" property="offers" typeof="Offer">

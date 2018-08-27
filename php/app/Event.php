@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model
@@ -29,6 +30,11 @@ class Event extends Model
     public function order()
     {
         return $this->hasMany(Order::class);
+    }
+
+    public function getExpiredAttribute()
+    {
+        return $this->start_at > new Carbon('-1 days');
     }
 
     public function getLeftAttribute()
