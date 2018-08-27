@@ -14,6 +14,7 @@
       }
       const current = document.querySelector(`#${id}`)
       const remain = 3 - current.value
+      const oppsite = document.querySelector(`#${map[id]}`).value
 
       while (document.querySelector(`#${map[id]}`).options.length) {
         document.querySelector(`#${map[id]}`).options[0] = null
@@ -27,6 +28,8 @@
 
         document.querySelector(`#${map[id]}`).append(option)
       }
+
+      document.querySelector(`#${map[id]}`).value = oppsite
     }
   </script>
   <section id="tickets" class="container">
