@@ -19,15 +19,13 @@
         document.querySelector(`#${map[id]}`).options[0] = null
       }
 
-      for (let value = 0; value <= 3; value ++) {
-        if (value <= remain) {
-          const option = document.createElement('option')
+      for (let value = 0; value <= remain; value ++) {
+        const option = document.createElement('option')
 
-          option.setAttribute('value', value)
-          option.text = value
+        option.setAttribute('value', value)
+        option.text = value
 
-          document.querySelector(`#${map[id]}`).append(option)
-        }
+        document.querySelector(`#${map[id]}`).append(option)
       }
     }
   </script>
