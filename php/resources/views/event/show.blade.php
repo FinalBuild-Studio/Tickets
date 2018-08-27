@@ -6,6 +6,31 @@
 
 @section('content')
   @include('head')
+  <script type="text/javascript">
+    const updateTicket = id => {
+      const map = {
+        crypto: 'free',
+        free: 'crypto'
+      }
+      const current = document.querySelector(`#${id}`)
+      const remain = 3 - current.value
+
+      while (document.querySelector(`#${map[id]}`).options.length) {
+        document.querySelector(`#${map[id]}`).options[0] = null
+      }
+
+      for (let value = 0; value <= 3; value ++) {
+        if (value <= remain) {
+          const option = document.createElement('option')
+
+          option.setAttribute('value', value)
+          option.text = value
+
+          document.querySelector(`#${map[id]}`).append(option)
+        }
+      }
+    }
+  </script>
   <section id="tickets" class="container">
     <div class="row">
       <h1 class="section_head">
@@ -36,7 +61,7 @@
                       </div>
                     </td>
                     <td style="width:85px;">
-                      <select name="free" class="form-control" style="text-align: center">
+                      <select id="free" name="free" class="form-control" style="text-align: center" onchange="updateTicket('free')">
                         @for ($i = 0; $i <= $event->left && $i <= 3; $i++)
                           <option value="{{ $i }}">{{ $i }}</option>
                         @endfor
@@ -59,7 +84,7 @@
                        </div>
                       </td>
                       <td style="width:85px;">
-                        <select name="crypto" class="form-control" style="text-align: center">
+                        <select id="crypto" name="crypto" class="form-control" style="text-align: center" onchange="updateTicket('crypto')">
                           @for ($i = 0; $i <= $event->left && $i <= 3; $i++)
                             <option value="{{ $i }}">{{ $i }}</option>
                           @endfor
