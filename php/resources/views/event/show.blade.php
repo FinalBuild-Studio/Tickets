@@ -109,13 +109,15 @@
       </div>
     </div>
   </section>
-  <section id="location" class="container p0">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="google-maps content">
-          <iframe frameborder="0" style="border:0;" src="https://www.google.com/maps/embed/v1/place?key={{ env('GOOGLE_API_KEY') }}&q={{ $event->address }}"></iframe>
+  @if($event->address)
+    <section id="location" class="container p0">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="google-maps content">
+            <iframe frameborder="0" style="border:0;" src="https://www.google.com/maps/embed/v1/place?key={{ env('GOOGLE_API_KEY') }}&q={{ urlencode($event->address) }}"></iframe>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  @endif
 @endsection
