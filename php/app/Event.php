@@ -34,7 +34,7 @@ class Event extends Model
 
     public function getExpiredAttribute()
     {
-        return $this->start_at > new Carbon('-1 days');
+        return $this->start_at < new Carbon('-1 days');
     }
 
     public function getLeftAttribute()
