@@ -10,7 +10,7 @@ class CheckinController extends Controller
 
     public function index(Request $request, $reference)
     {
-        $order = Order::where('reference', '=', $reference)
+        $order = Order::where('reference', $reference)
             ->first();
 
         if ($order && $order->status === Order::PAID) {

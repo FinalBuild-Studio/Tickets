@@ -13,8 +13,8 @@ class PayController extends Controller
 
     public function index($reference)
     {
-        $order = Order::where('reference', '=', $reference)
-            ->where('status', '=', Order::INITIAL)
+        $order = Order::where('reference', $reference)
+            ->where('status', Order::INITIAL)
             ->where('amount', '>', 0)
             ->firstOrFail();
 
@@ -23,16 +23,16 @@ class PayController extends Controller
 
     public function store(Request $request, $reference)
     {
-        $order = Order::where('reference', '=', $reference)
-            ->where('status', '=', Order::INITIAL)
+        $order = Order::where('reference', $reference)
+            ->where('status', Order::INITIAL)
             ->lockForUpdate()
             ->firstOrFail();
 
         $name  = $request->input('name');
         $email = $request->input('email');
 
-        $oldOrder = Order::where('event_id', '=', $order->event->id)
-            ->where('email', '=', $email)
+        $oldOrder = Order::where('event_id', $order->event->id)
+            ->where('email', $email)
             ->where('status', '<>', Order::PAID)
             ->first();
 

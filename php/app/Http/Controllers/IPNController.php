@@ -47,7 +47,7 @@ class IPNController extends Controller
         $statusText = $request->input('status_text');
         $itemNumber = $request->input('item_number');
 
-        $order = Order::where('reference', '=', $itemNumber)
+        $order = Order::where('reference', $itemNumber)
             ->lockForUpdate()
             ->firstOrFail();
 

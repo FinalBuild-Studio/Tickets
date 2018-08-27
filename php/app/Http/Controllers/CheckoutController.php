@@ -15,10 +15,10 @@ class CheckoutController extends Controller
         $crypto = $request->input('crypto', 0);
         $free   = $request->input('free', 0);
 
-        $event = Event::where('id', '=', $eventId)
+        $event = Event::where('id', $eventId)
             ->whereDate('start_at', '>', new Carbon('+1 days'))
             ->firstOrFail();
-        $total = Order::where('event_id', '=', $event->id)
+        $total = Order::where('event_id', $event->id)
             ->whereIn('status', [Order::PAID, Order::CONFIRM])
             ->sum('total');
 

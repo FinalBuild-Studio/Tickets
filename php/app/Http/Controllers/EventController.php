@@ -20,7 +20,7 @@ class EventController extends Controller
 
     public function show($id)
     {
-        $event = Event::where('id', '=', $id)
+        $event = Event::where('id', $id)
             ->firstOrFail();
 
         return view('event.show', compact('event'));
