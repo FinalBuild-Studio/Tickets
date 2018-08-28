@@ -37,7 +37,7 @@ class CheckoutController extends Controller
             throw new GeneralException(400, '活動剩餘人數不足');
         }
 
-        if (!$total) {
+        if (!$sponsor && !$total) {
             throw new GeneralException(400, '請輸入大於0的票數');
         }
 

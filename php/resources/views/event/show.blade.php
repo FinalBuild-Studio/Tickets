@@ -17,6 +17,8 @@
 
       const map = ['free', 'crypto']
       map.forEach(id => {
+        document.querySelector(`#${id}`).value = 0
+
         while (document.querySelector(`#${id}`).options.length) {
           document.querySelector(`#${id}`).options[0] = null
         }

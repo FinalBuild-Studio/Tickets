@@ -14,7 +14,6 @@ class ExceptionBase extends Exception
     {
         $exceptions    = config('exceptions');
         $exceptions    = $exceptions[get_called_class()] ?? [];
-        $message       = $exceptions[$message] ?? '';
         $this->payload = $payload;
 
         parent::__construct($message, $this->code);

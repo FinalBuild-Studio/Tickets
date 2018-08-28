@@ -60,10 +60,10 @@
       </footer>
     </div>
     <script src="/js/app.js"></script>
-    @isset($error)
+    @if(session('error'))
       <script type="text/javascript">
-        humane.log('{{ $error }}')
+        humane.log('{{ session('error') }}')
       </script>
-    @endisset
+    @endif
   </body>
 </html>
