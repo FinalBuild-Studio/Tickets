@@ -64,7 +64,7 @@
           </div>
         </div>
       @else
-        @if ($order->amount || !$order->event->price)
+        @if ($order->amount || !$order->event->price || $order->is_sponsor)
           <div class="row vertical">
             <div class="col-md">
               <i class="fas fa-check s30 green"></i>
@@ -72,7 +72,7 @@
           </div>
           <div class="row">
             <div class="col-md">
-              <h2>已完成報到手續</h2>
+              <h2>已完成報到手續{{ $order->is_sponsor ? '(贊助票)' : '' }}</h2>
             </div>
           </div>
         @else
