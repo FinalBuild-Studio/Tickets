@@ -4,7 +4,7 @@
     "place": "未定",
     "start_at": "2018-09-15 14:00:00",
     "end_at": "2018-09-15 17:00:00",
-    "max": 20,
+    "max": 40,
     "price": 150,
     "poster": "https://www.docker.com/sites/default/files/social/docker_facebook_share.png",
     "discount_rate": 0.4

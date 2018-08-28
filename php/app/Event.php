@@ -20,6 +20,7 @@ class Event extends Model
         'description',
         'template',
         'discount_rate',
+        'sponsor_tickets',
     ];
 
     protected $dates = [
@@ -32,6 +33,15 @@ class Event extends Model
         return $this->hasMany(Order::class);
     }
 
+    public function getLeftSponsorTicketsAttribute()
+    {
+        return $this->sponsor_tickets - $this
+            ->order()
+            ->where('status', Order::PAID)
+            ->where('is_sponsor', true)
+            ->sum('total');
+    }
+
     public function getExpiredAttribute()
     {
         return $this->start_at < new Carbon('-1 days');
@@ -41,7 +51,8 @@ class Event extends Model
     {
         return $this->max - $this
             ->order()
-            ->where('status', '=', Order::PAID)
+            ->where('status', Order::PAID)
+            ->where('is_sponsor', false)
             ->sum('total');
     }
 }

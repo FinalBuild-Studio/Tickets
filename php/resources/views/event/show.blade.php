@@ -7,6 +7,32 @@
 @section('content')
   @include('head')
   <script type="text/javascript">
+    const updateSponsor = () => {
+      const sponsor = document.querySelector(`#sponsor`)
+      ['free', 'crypto'].forEach(id => {
+        if (sponsor.value > 0) {
+            while (document.querySelector(`#${id}`).options.length) {
+              document.querySelector(`#${id}`).options[0] = null
+            }
+
+            const option = document.createElement('option')
+
+            option.setAttribute('value', 0)
+            option.text = 0
+
+            document.querySelector(`#${id}`).append(option)
+        } else {
+          for (let value = 0; value <= 3; value ++) {
+            const option = document.createElement('option')
+
+            option.setAttribute('value', value)
+            option.text = value
+
+            document.querySelector(`#${map[id]}`).append(option)
+          }
+        }
+      })
+    }
     const updateTicket = id => {
       const map = {
         crypto: 'free',
@@ -73,6 +99,30 @@
                       </select>
                     </td>
                   </tr>
+                  @if ($event->sponsor_tickets)
+                    <tr class="ticket" property="offers" typeof="Offer">
+                      <td>
+                        <span class="ticket-title semibold" property="name">
+                         贊助票
+                        </span>
+                        <p class="ticket-descripton mb0 text-muted" property="description">
+                          贊助商票券
+                        </p>
+                      </td>
+                      <td style="text-align: right;">
+                       <div class="ticket-pricing" style="margin-right: 20px;">
+                        0 NTD
+                       </div>
+                      </td>
+                      <td style="width:85px;">
+                        <select id="sponsor" name="sponsor" class="form-control" style="text-align: center" onchange="updateSponsor">
+                          @for ($i = 0; $i <= $event->left_sponsor_tickets && $i <= 1; $i++)
+                            <option value="{{ $i }}">{{ $i }}</option>
+                          @endfor
+                        </select>
+                      </td>
+                    </tr>
+                  @endif
                   @if ($event->price > 0)
                     <tr class="ticket" property="offers" typeof="Offer">
                       <td>
