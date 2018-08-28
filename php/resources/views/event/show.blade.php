@@ -14,12 +14,14 @@
   <script type="text/javascript">
     const updateSponsor = () => {
       const sponsor = document.querySelector(`#sponsor`)
-      ['free', 'crypto'].forEach(id => {
-        if (sponsor.value > 0) {
-            while (document.querySelector(`#${id}`).options.length) {
-              document.querySelector(`#${id}`).options[0] = null
-            }
 
+      while (document.querySelector(`#${id}`).options.length) {
+        document.querySelector(`#${id}`).options[0] = null
+      }
+
+      const map = ['free', 'crypto']
+      map.forEach(id => {
+        if (sponsor.value > 0) {
             const option = document.createElement('option')
 
             option.setAttribute('value', 0)
@@ -33,7 +35,7 @@
             option.setAttribute('value', value)
             option.text = value
 
-            document.querySelector(`#${map[id]}`).append(option)
+            document.querySelector(`#${id}`).append(option)
           }
         }
       })
@@ -182,12 +184,12 @@
       </h1>
     </div>
     <div class="row">
-      <div class="col-md-7">
+      <div class="col-md-9">
         <div class="content event-details" property="description">
           {!! $event->description !!}
         </div>
       </div>
-      <div class="col-md-5">
+      <div class="col-md-3">
         <div class="content event-poster">
           <img alt="{{ $event->name }}" src="{{ $event->poster }}" property="image" style="max-width: 100%;">
         </div>
