@@ -19,10 +19,6 @@ class CheckoutController extends Controller
         $event = Event::where('id', $eventId)
             ->whereDate('start_at', '>', new Carbon('+1 days'))
             ->firstOrFail();
-        $total = Order::where('event_id', $event->id)
-            ->whereIn('status', [Order::PAID, Order::CONFIRM])
-            ->sum('total');
-
         $total = ($crypto + $free);
 
         if ($sponsor && $total) {

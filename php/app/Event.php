@@ -37,7 +37,7 @@ class Event extends Model
     {
         return $this->sponsor_tickets - $this
             ->order()
-            ->where('status', Order::PAID)
+            ->whereIn('status', [Order::PAID, Order::CONFIRM])
             ->where('is_sponsor', true)
             ->sum('total');
     }
@@ -51,7 +51,7 @@ class Event extends Model
     {
         return $this->max - $this
             ->order()
-            ->where('status', Order::PAID)
+            ->whereIn('status', [Order::PAID, Order::CONFIRM])
             ->where('is_sponsor', false)
             ->sum('total');
     }
