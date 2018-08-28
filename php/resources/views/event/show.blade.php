@@ -134,7 +134,7 @@
       </div>
       <div class="col-md-5">
         <div class="content event-poster">
-          <img alt="{{ $event->name }}" src="{{ $event->poster }}" property="image">
+          <img alt="{{ $event->name }}" src="{{ $event->poster }}" property="image" style="max-width: 100%;">
         </div>
       </div>
     </div>
