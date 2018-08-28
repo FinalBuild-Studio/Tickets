@@ -6,6 +6,11 @@
 
 @section('content')
   @include('head')
+  <style media="screen">
+    .event-details img {
+      max-width: 100%;
+    }
+  </style>
   <script type="text/javascript">
     const updateSponsor = () => {
       const sponsor = document.querySelector(`#sponsor`)
