@@ -15,12 +15,12 @@
     const updateSponsor = () => {
       const sponsor = document.querySelector(`#sponsor`)
 
-      while (document.querySelector(`#${id}`).options.length) {
-        document.querySelector(`#${id}`).options[0] = null
-      }
-
       const map = ['free', 'crypto']
       map.forEach(id => {
+        while (document.querySelector(`#${id}`).options.length) {
+          document.querySelector(`#${id}`).options[0] = null
+        }
+
         if (sponsor.value > 0) {
             const option = document.createElement('option')
 
