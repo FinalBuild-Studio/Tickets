@@ -107,7 +107,7 @@ class Handler extends ExceptionHandler
 
         if ($back !== $current) {
             return back()
-                ->with('error', $message);
+                ->with('message', $message);
         } else {
             return view('error');
         }

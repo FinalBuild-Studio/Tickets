@@ -60,9 +60,9 @@
       </footer>
     </div>
     <script src="/js/app.js"></script>
-    @if(session('error'))
+    @if(session('message'))
       <script type="text/javascript">
-        humane.log('{{ session('error') }}')
+        humane.log('{{ session('message') }}')
       </script>
     @endif
   </body>

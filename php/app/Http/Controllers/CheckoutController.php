@@ -51,6 +51,7 @@ class CheckoutController extends Controller
         $order->total      = $total + $sponsor;
         $order->event_id   = $eventId;
         $order->is_sponsor = $sponsor ? true : false;
+        $order->key        = md5(microtime());
         $order->save();
 
         return view('checkout.store', compact('event', 'order'));
