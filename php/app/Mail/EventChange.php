@@ -39,7 +39,7 @@ class EventChange extends Mailable
         $order = $this->order;
 
         return $this
-            ->view('mails.event.change')
+            ->view('mails.order.change')
             ->subject('[CapsLock, Studio Event] '.$order->event->name.': 活動變更通知！')
             ->with(compact('order'));
     }
