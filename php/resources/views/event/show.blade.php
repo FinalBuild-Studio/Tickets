@@ -170,7 +170,7 @@
               </table>
              @else
               <div style="display:flex; align-items: center; justify-content: center;">
-                <h4>所有票卷皆已售完</h4>
+                <h4>所有票券皆已售完</h4>
               </div>
              @endif
             </div>
