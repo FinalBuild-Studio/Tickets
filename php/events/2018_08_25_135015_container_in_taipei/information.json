@@ -1,10 +1,10 @@
 {
     "name": "從零開始的容器工程師 - 台北場",
-    "address": "臺北市大安區信義路二段222號",
-    "place": "小樹屋 東門 02",
+    "address": "106台北市大安區和平東路一段8號",
+    "place": "小樹屋 古亭和平 303",
     "start_at": "2018-09-02 14:00:00",
     "end_at": "2018-09-02 17:00:00",
-    "max": 13,
+    "max": 15,
     "price": 200,
     "poster": "https://www.docker.com/sites/default/files/social/docker_facebook_share.png",
     "discount_rate": 0.5
