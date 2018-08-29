@@ -29,10 +29,6 @@ class CheckoutController extends Controller
             throw new GeneralException(400, '一般票券限購三張');
         }
 
-        if ($sponsor > 1) {
-            throw new GeneralException(400, '贊助票券限購一張');
-        }
-
         if ($total > $event->left) {
             throw new GeneralException(400, '活動剩餘人數不足');
         }

@@ -1,7 +1,7 @@
 @extends('base')
 
 @section('title')
-  活動內容
+  {{ $event->name }}
 @endsection
 
 @section('content')
@@ -125,7 +125,7 @@
                       </td>
                       <td style="width:85px;">
                         <select id="sponsor" name="sponsor" class="form-control" style="text-align: center" onchange="updateSponsor()">
-                          @for ($i = 0; $i <= $event->left_sponsor_tickets && $i <= 1; $i++)
+                          @for ($i = 0; $i <= $event->left_sponsor_tickets; $i++)
                             <option value="{{ $i }}">{{ $i }}</option>
                           @endfor
                         </select>

@@ -65,8 +65,11 @@
         <div class="content event_view_order">
           <div class="order_details well">
             <div class="row">
-              <div class="col-sm-8 col-xs-12">
+              <div class="col-sm-4 col-xs-6">
                 <b>名稱</b><br> {{ $order->name }}
+              </div>
+              <div class="col-sm-4 col-xs-6">
+                <b>數量</b><br> {{ $order->total }}
               </div>
               <div class="col-sm-4 col-xs-6">
                 <b>金額</b><br> {{ $order->amount }} NTD
