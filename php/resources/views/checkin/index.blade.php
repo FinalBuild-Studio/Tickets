@@ -41,7 +41,7 @@
   </head>
   <body>
     <div class="container text-center max-height max-width">
-      @if (!$order)
+      @if (!isset($order))
         <div class="row vertical">
           <div class="col-md">
             <i class="fas fa-times s30 red"></i>
