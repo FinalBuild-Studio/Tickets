@@ -14,6 +14,7 @@ class CheckinController extends Controller
         $order = Order::join('events', 'events.id', 'orders.event_id')
             ->where('reference', $reference)
             ->whereDate('start_at', '<=', Carbon::now())
+            ->whereDate('end_at', '>=', Carbon::now())
             ->first();
 
         if ($order && $order->status === Order::PAID) {

@@ -26,7 +26,7 @@
          </div>
          <div style="padding-bottom: 8px;">
            <i class="fas fa-users"></i>
-           <span>{{ $event->max }} 人</span>
+           <span>{{ $event->max - $event->left }} / {{ $event->max }} 人</span>
          </div>
          <div style="display: inline; flex: 1 1 0%;">
            <a href="/event/{{ $event->id }}">
