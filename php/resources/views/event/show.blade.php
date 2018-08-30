@@ -108,30 +108,6 @@
                       </select>
                     </td>
                   </tr>
-                  @if ($event->sponsor_tickets)
-                    <tr class="ticket" property="offers" typeof="Offer">
-                      <td>
-                        <span class="ticket-title semibold" property="name">
-                         贊助票
-                        </span>
-                        <p class="ticket-descripton mb0 text-muted" property="description">
-                          贊助商票券
-                        </p>
-                      </td>
-                      <td style="text-align: right;">
-                       <div class="ticket-pricing" style="margin-right: 20px;">
-                        0 NTD
-                       </div>
-                      </td>
-                      <td style="width:85px;">
-                        <select id="sponsor" name="sponsor" class="form-control" style="text-align: center" onchange="updateSponsor()">
-                          @for ($i = 0; $i <= $event->left_sponsor_tickets; $i++)
-                            <option value="{{ $i }}">{{ $i }}</option>
-                          @endfor
-                        </select>
-                      </td>
-                    </tr>
-                  @endif
                   @if ($event->price > 0)
                     <tr class="ticket" property="offers" typeof="Offer">
                       <td>
@@ -168,6 +144,30 @@
                   </tr>
                 </tbody>
               </table>
+             @elseif ($event->sponsor_tickets)
+               <tr class="ticket" property="offers" typeof="Offer">
+                 <td>
+                   <span class="ticket-title semibold" property="name">
+                    贊助票
+                   </span>
+                   <p class="ticket-descripton mb0 text-muted" property="description">
+                     贊助商票券
+                   </p>
+                 </td>
+                 <td style="text-align: right;">
+                  <div class="ticket-pricing" style="margin-right: 20px;">
+                   0 NTD
+                  </div>
+                 </td>
+                 <td style="width:85px;">
+                   <select id="sponsor" name="sponsor" class="form-control" style="text-align: center" onchange="updateSponsor()">
+                     @for ($i = 0; $i <= $event->left_sponsor_tickets; $i++)
+                       <option value="{{ $i }}">{{ $i }}</option>
+                     @endfor
+                   </select>
+                 </td>
+               </tr>
+             @endif
              @else
               <div style="display:flex; align-items: center; justify-content: center;">
                 <h4>所有票券皆已售完</h4>
