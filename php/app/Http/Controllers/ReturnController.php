@@ -12,7 +12,7 @@ class ReturnController extends Controller
     public function index(Request $request, $reference)
     {
         $key   = $request->query('key');
-        $order = Order::join('events', 'events.id', 'order.event_id')
+        $order = Order::join('events', 'events.id', 'orders.event_id')
             ->whereDate('start_at', '>', new Carbon('+1 days'))
             ->where('reference', $reference)
             ->where('status', Order::PAID)
