@@ -83,32 +83,58 @@
                <div style="display:flex; align-items: center; justify-content: center;">
                  <h4>報名已截止，請洽管理員</h4>
                </div>
-              @elseif ($event->left)
+             @elseif ($event->left || $event->sponsor_tickets)
               <table class="table">
                 <tbody>
-                  <tr class="ticket" property="offers" typeof="Offer">
-                    <td>
-                      <span class="ticket-title semibold" property="name">
-                        現場票
-                      </span>
-                      <p class="ticket-descripton mb0 text-muted" property="description">
-                        到現場以現金支付新台幣 {{ $event->price }} 元 {{ $event->discount_rate ? '(學生優惠: 新台幣 '.((1 - $event->discount_rate) * $event->price).' 元)' : '' }}
-                      </p>
-                    </td>
-                    <td style="text-align: right;">
-                      <div class="ticket-pricing" style="margin-right: 20px;">
-                       0 NTD
-                      </div>
-                    </td>
-                    <td style="width:85px;">
-                      <select id="free" name="free" class="form-control" style="text-align: center" onchange="updateTicket('free')">
-                        @for ($i = 0; $i <= $event->left && $i <= 3; $i++)
-                          <option value="{{ $i }}">{{ $i }}</option>
-                        @endfor
-                      </select>
-                    </td>
-                  </tr>
-                  @if ($event->price > 0)
+                  @if ($event->left)
+                    <tr class="ticket" property="offers" typeof="Offer">
+                      <td>
+                        <span class="ticket-title semibold" property="name">
+                          現場票
+                        </span>
+                        <p class="ticket-descripton mb0 text-muted" property="description">
+                          到現場以現金支付新台幣 {{ $event->price }} 元 {{ $event->discount_rate ? '(學生優惠: 新台幣 '.((1 - $event->discount_rate) * $event->price).' 元)' : '' }}
+                        </p>
+                      </td>
+                      <td style="text-align: right;">
+                        <div class="ticket-pricing" style="margin-right: 20px;">
+                         0 NTD
+                        </div>
+                      </td>
+                      <td style="width:85px;">
+                        <select id="free" name="free" class="form-control" style="text-align: center" onchange="updateTicket('free')">
+                          @for ($i = 0; $i <= $event->left && $i <= 3; $i++)
+                            <option value="{{ $i }}">{{ $i }}</option>
+                          @endfor
+                        </select>
+                      </td>
+                    </tr>
+                  @endif
+                  @if ($event->sponsor_tickets)
+                    <tr class="ticket" property="offers" typeof="Offer">
+                      <td>
+                        <span class="ticket-title semibold" property="name">
+                         贊助票
+                        </span>
+                        <p class="ticket-descripton mb0 text-muted" property="description">
+                          贊助商票券
+                        </p>
+                      </td>
+                      <td style="text-align: right;">
+                       <div class="ticket-pricing" style="margin-right: 20px;">
+                        0 NTD
+                       </div>
+                      </td>
+                      <td style="width:85px;">
+                        <select id="sponsor" name="sponsor" class="form-control" style="text-align: center" onchange="updateSponsor()">
+                          @for ($i = 0; $i <= $event->left_sponsor_tickets; $i++)
+                            <option value="{{ $i }}">{{ $i }}</option>
+                          @endfor
+                        </select>
+                      </td>
+                    </tr>
+                  @endif
+                  @if ($event->left && $event->price > 0)
                     <tr class="ticket" property="offers" typeof="Offer">
                       <td>
                         <span class="ticket-title semibold" property="name">
@@ -144,29 +170,6 @@
                   </tr>
                 </tbody>
               </table>
-             @elseif ($event->sponsor_tickets)
-               <tr class="ticket" property="offers" typeof="Offer">
-                 <td>
-                   <span class="ticket-title semibold" property="name">
-                    贊助票
-                   </span>
-                   <p class="ticket-descripton mb0 text-muted" property="description">
-                     贊助商票券
-                   </p>
-                 </td>
-                 <td style="text-align: right;">
-                  <div class="ticket-pricing" style="margin-right: 20px;">
-                   0 NTD
-                  </div>
-                 </td>
-                 <td style="width:85px;">
-                   <select id="sponsor" name="sponsor" class="form-control" style="text-align: center" onchange="updateSponsor()">
-                     @for ($i = 0; $i <= $event->left_sponsor_tickets; $i++)
-                       <option value="{{ $i }}">{{ $i }}</option>
-                     @endfor
-                   </select>
-                 </td>
-               </tr>
              @else
               <div style="display:flex; align-items: center; justify-content: center;">
                 <h4>所有票券皆已售完</h4>
