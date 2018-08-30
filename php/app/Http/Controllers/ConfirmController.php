@@ -10,7 +10,7 @@ class ConfirmController extends Controller
     public function index($reference)
     {
         $order = Order::where('reference', $reference)
-            ->where('status', Order::PAID)
+            ->whereIn('status', [Order::PAID, Order::CONFIRM])
             ->firstOrFail();
 
         return view('confirm.index', compact('order'));
