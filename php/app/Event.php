@@ -47,6 +47,11 @@ class Event extends Model
         return $this->start_at < new Carbon('-1 days');
     }
 
+    public function getTotalTicketsAttribute()
+    {
+        return $this->max + $this->sponsor_tickets;
+    }
+
     public function getLeftAttribute()
     {
         return $this->max - $this
