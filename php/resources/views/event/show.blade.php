@@ -167,7 +167,6 @@
                    </select>
                  </td>
                </tr>
-             @endif
              @else
               <div style="display:flex; align-items: center; justify-content: center;">
                 <h4>所有票券皆已售完</h4>
