@@ -12,12 +12,13 @@ class ReturnController extends Controller
     public function index(Request $request, $reference)
     {
         $key   = $request->query('key');
-        $order = Order::where('reference', $reference)
-            ->where('status', Order::PAID)
+        $order = Order::join('events', 'events.id', 'order.event_id')
             ->whereDate('start_at', '>', new Carbon('+1 days'))
+            ->where('reference', $reference)
+            ->where('status', Order::PAID)
             ->firstOrFail();
 
-        if ($order->key !== $key) {
+        if (!$key || $order->key !== $key) {
             throw new GeneralException(400, '驗證不正確');
         }
 
