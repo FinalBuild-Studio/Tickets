@@ -75,7 +75,7 @@ class OrderConfirmed extends Mailable
         return $this
             ->subject('[CapsLock, Studio Event] '.$order->event->name.': 訂單已成立！感謝您的參與！')
             ->view('mails.order.confirmed')
-            ->attachData($ics, 'calendar.ics', ['mime' => 'calendar/event'])
+            ->attachData($ics, 'calendar.ics', ['mime' => 'text/calendar'])
             ->with(compact('order'));
     }
 }
