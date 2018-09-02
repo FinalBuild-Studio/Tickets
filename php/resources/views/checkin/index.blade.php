@@ -11,7 +11,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <style media="screen">
       .s30 {
-        font-size: 30%;
+        font-size: 30vh;
       }
 
       .green {
@@ -35,7 +35,7 @@
       }
 
       .vertical {
-        margin-top: calc(50% - 15% - 1rem);
+        margin-top: calc(50vh - 15vh - 1rem);
       }
     </style>
   </head>
