@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use Mail;
 use App\Order;
 use App\Mail\EventNotify;
 use Illuminate\Console\Command;
