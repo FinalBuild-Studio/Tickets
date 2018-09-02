@@ -27,11 +27,11 @@
       }
 
       .max-width {
-        width: 100vw;
+        width: 100%;
       }
 
       .max-height {
-        height: 100vh;
+        height: 100%;
       }
 
       .vertical {
