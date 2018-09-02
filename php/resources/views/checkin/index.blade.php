@@ -27,15 +27,15 @@
       }
 
       .max-width {
-        width: 100%;
+        width: 100vw;
       }
 
       .max-height {
-        height: 100%;
+        height: 100vh;
       }
 
       .vertical {
-        margin-top: calc(50% - 15vh - 1rem);
+        margin-top: calc(50vh - 15vh - 1rem);
       }
     </style>
   </head>
