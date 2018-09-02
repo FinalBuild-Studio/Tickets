@@ -35,7 +35,7 @@
       }
 
       .vertical {
-        margin-top: calc(50vh - 15vh - 1rem);
+        margin-top: calc(50% - 15vh - 1rem);
       }
     </style>
   </head>
