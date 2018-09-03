@@ -16,6 +16,7 @@ class ReturnController extends Controller
             ->whereDate('start_at', '>', new Carbon('+1 days'))
             ->where('reference', $reference)
             ->where('status', Order::PAID)
+            ->where('amount', 0)
             ->firstOrFail();
 
         if (!$key || $order->key !== $key) {
