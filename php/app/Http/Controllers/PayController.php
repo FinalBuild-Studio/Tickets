@@ -33,7 +33,7 @@ class PayController extends Controller
 
         $oldOrder = Order::where('event_id', $order->event->id)
             ->where('email', $email)
-            ->where('status', '<>', Order::PAID)
+            ->whereIn('status', [Order::PAID, Order::CONFIRM])
             ->first();
 
         if ($oldOrder) {
