@@ -46,7 +46,7 @@ class IPNController extends Controller
         $orderStatus = $_POST['status'];
 
         // If $order_status is >100 or is 2, then it is complete
-        $orderStatus = ($orderStatus >= 100 || $orderStatus == 2)
+        $orderStatus = ($orderStatus >= 100 || $orderStatus == 2 || $orderStatus == 1);
 
         //These would normally be loaded from your database, the most common way is to pass the Order ID through the 'custom' POST field.
         $currency = env('PAYMENT_CURRENCY', 'TWD');
@@ -54,7 +54,6 @@ class IPNController extends Controller
         $currency1  = $request->input('currency1');
         $amount1    = $request->input('amount1');
         $status     = $request->input('status');
-        $statusText = $request->input('status_text');
         $itemNumber = $request->input('item_number');
 
         $order = Order::where('reference', $itemNumber)
@@ -73,7 +72,7 @@ class IPNController extends Controller
             throw new PaymentException(412, 'Amount is less than order total!');
         }
 
-        if ($orderStatus) {
+        if ($orderStatus && $order->status === Order::INITIAL) {
             // Send email to indicate you've paid the ticket
             Mail::to($order->email)->queue(new OrderConfirmed($order));
 
