@@ -4,7 +4,7 @@ namespace App\Console\Commands;
 
 use Mail;
 use App\Order;
-use App\Mail\EventNotify;
+use App\Mail\{EventNotify, EventWarn, EventChange};
 use Illuminate\Console\Command;
 
 class NotifyEventCommand extends Command
@@ -14,7 +14,7 @@ class NotifyEventCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'event:notify {id}';
+    protected $signature = 'event:notify {type} {id}';
 
     /**
      * The console command description.
@@ -40,14 +40,25 @@ class NotifyEventCommand extends Command
      */
     public function handle()
     {
-        $id = $this->argument('id');
+        $id   = $this->argument('id');
+        $type = $this->argument('type');
 
         $orders = Order::where('event_id', $id)
             ->whereIn('status', [Order::CONFIRM, Order::PAID])
             ->get();
 
-        foreach ($orders as $order) {
-            Mail::to($order->email)->queue(new EventNotify($order));
+        $types = [
+            'change' => 'EventChange',
+            'notify' => 'EventNotify',
+            'warn'   => 'EventWarn',
+        ];
+        $mail = $types[$type] ?? null;
+
+        if ($mail) {
+            foreach ($orders as $order) {
+                $this->info($order->email.' has been sent, type: '.$mail);
+                Mail::to($order->email)->queue(new $mail($order));
+            }
         }
     }
 }
