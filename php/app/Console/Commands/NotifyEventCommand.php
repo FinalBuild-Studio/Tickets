@@ -48,9 +48,9 @@ class NotifyEventCommand extends Command
             ->get();
 
         $types = [
-            'change' => 'EventChange',
-            'notify' => 'EventNotify',
-            'warn'   => 'EventWarn',
+            'change' => EventChange::class,
+            'notify' => EventNotify::class,
+            'warn'   => EventWarn::class,
         ];
         $mail = $types[$type] ?? null;
 
