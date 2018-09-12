@@ -83,7 +83,7 @@
                <div style="display:flex; align-items: center; justify-content: center;">
                  <h4>報名已截止，請洽管理員</h4>
                </div>
-             @elseif ($event->left || $event->sponsor_tickets)
+             @elseif ($event->left || $event->left_sponsor_tickets)
               <table class="table">
                 <tbody>
                   @if ($event->left)
@@ -110,7 +110,7 @@
                       </td>
                     </tr>
                   @endif
-                  @if ($event->sponsor_tickets)
+                  @if ($event->left_sponsor_tickets)
                     <tr class="ticket" property="offers" typeof="Offer">
                       <td>
                         <span class="ticket-title semibold" property="name">
