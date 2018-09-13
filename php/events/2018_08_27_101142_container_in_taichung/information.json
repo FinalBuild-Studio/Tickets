@@ -4,9 +4,9 @@
     "place": "夢森林 (七樓)",
     "start_at": "2018-09-15 14:00:00",
     "end_at": "2018-09-15 17:00:00",
-    "max": 30,
+    "max": 32,
     "price": 150,
     "poster": "https://www.docker.com/sites/default/files/social/docker_facebook_share.png",
     "discount_rate": 0.4,
-    "sponsor_tickets": 15
+    "sponsor_tickets": 13
 }
