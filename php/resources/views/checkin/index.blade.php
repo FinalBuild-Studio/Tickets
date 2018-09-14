@@ -35,17 +35,16 @@
       }
 
       .vertical {
+        margin-top: calc(50vh - 15vh - 1rem);
+      }
+
+      .vertical-2x {
         margin-top: calc(50vh - 15vh - 2rem);
       }
     </style>
   </head>
   <body>
     <div class="container text-center max-height max-width">
-      <div class="row">
-        <div class="col-md">
-          <h2 style="{{ strlen($order->name) > 12 ? 'color: red;' : '' }}">{{ str_limit($order->name, 12) }}</h2>
-        </div>
-      </div>
       @if (!isset($order))
         <div class="row vertical">
           <div class="col-md">
@@ -70,24 +69,26 @@
         </div>
       @else
         @if ($order->amount || !$order->event->price || $order->is_sponsor)
-          <div class="row vertical">
+          <div class="row vertical-2x">
             <div class="col-md">
               <i class="fas fa-check s30 green"></i>
             </div>
           </div>
           <div class="row">
             <div class="col-md">
+              <h2 style="{{ mb_strlen($order->name) > 12 ? 'color: red;' : '' }}">{{ mb_strimwidth($order->name, 0, 12) }}</h2>
               <h2>已完成報到手續{{ $order->is_sponsor ? '(贊助票)' : '' }}</h2>
             </div>
           </div>
         @else
-          <div class="row vertical">
+          <div class="row vertical-2x">
             <div class="col-md">
               <i class="fas fa-exclamation-triangle s30 orange"></i>
             </div>
           </div>
           <div class="row">
             <div class="col-md">
+              <h2 style="{{ mb_strlen($order->name) > 12 ? 'color: red;' : '' }}">{{ mb_strimwidth($order->name, 0, 12) }}</h2>
               <h2>現場收取 {{ $order->total * $order->event->price }} 元</h2>
             </div>
           </div>
