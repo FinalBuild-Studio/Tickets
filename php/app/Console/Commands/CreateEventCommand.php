@@ -57,5 +57,6 @@ EOD;
         mkdir($templatePath, 0777, true);
         file_put_contents($templatePath.'/information.json', $information);
         touch($templatePath.'/description.md');
+        touch($templatePath.'/memo.md');
     }
 }

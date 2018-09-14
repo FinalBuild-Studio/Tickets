@@ -48,9 +48,12 @@ class UpdateEventCommand extends Command
             $information = json_decode($information, true);
             $description = file_get_contents($templatePath.'/description.md');
             $description = $mark->text($description);
+            $memo        = file_get_contents($templatePath.'/memo.md');
+            $memo        = $mark->text($memo);
             $template    = basename($templatePath);
 
-            Event::where('template', $name)->update($information + compact('description', 'template'));
+            Event::where('template', $name)
+                ->update($information + compact('description', 'template', 'memo'));
             $this->info($template.' is updated');
         }
     }
