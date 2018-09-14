@@ -76,7 +76,7 @@
           </div>
           <div class="row">
             <div class="col-md">
-              <h2 style="{{ mb_strlen($order->name) > 12 ? 'color: red;' : '' }}">{{ mb_strimwidth($order->name, 0, 12) }}</h2>
+              <h2 style="{{ mb_strlen($order->name) > 12 ? 'color: red;' : '' }}">{{ mb_substr($order->name, 0, 12).(mb_strlen($order->name) > 12 ? '...' : '') }}</h2>
               <h2>已完成報到手續{{ $order->is_sponsor ? '(贊助票)' : '' }}</h2>
             </div>
           </div>
@@ -88,7 +88,7 @@
           </div>
           <div class="row">
             <div class="col-md">
-              <h2 style="{{ mb_strlen($order->name) > 12 ? 'color: red;' : '' }}">{{ mb_strimwidth($order->name, 0, 12) }}</h2>
+              <h2 style="{{ mb_strlen($order->name) > 12 ? 'color: red;' : '' }}">{{ mb_substr($order->name, 0, 12).(mb_strlen($order->name) > 12 ? '...' : '') }}</h2>
               <h2>現場收取 {{ $order->total * $order->event->price }} 元</h2>
             </div>
           </div>
