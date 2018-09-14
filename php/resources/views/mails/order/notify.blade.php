@@ -12,7 +12,8 @@
   請申請相關特殊票券的聽眾，攜帶相關證明文件(學生、贊助票)
 </p>
 @if ($order->event->memo)
-  {!! $order->event->memo !!}
+  <p style="color: red;">以下是其他注意事項</p>
+  <p>{!! $order->event->memo !!}</p>
 @endif
 <br>
 <br>
