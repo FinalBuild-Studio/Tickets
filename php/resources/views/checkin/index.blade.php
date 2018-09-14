@@ -35,12 +35,17 @@
       }
 
       .vertical {
-        margin-top: calc(50vh - 15vh - 1rem);
+        margin-top: calc(50vh - 15vh - 2rem);
       }
     </style>
   </head>
   <body>
     <div class="container text-center max-height max-width">
+      <div class="row">
+        <div class="col-md">
+          <h2 style="{{ strlen($order->name) > 12 ? 'color: red;' : '' }}">{{ str_limit($order->name, 12) }}</h2>
+        </div>
+      </div>
       @if (!isset($order))
         <div class="row vertical">
           <div class="col-md">
