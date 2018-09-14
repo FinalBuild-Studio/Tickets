@@ -13,7 +13,7 @@ class CheckinController extends Controller
     {
         $order = Order::where('reference', $reference)->first();
 
-        if ($order->event->start_at > Carbon::now()) {
+        if (new Carbon($order->event->start_at->format('Y-m-d')) > Carbon::now()) {
             $order = null;
         }
 
