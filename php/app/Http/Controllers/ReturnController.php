@@ -24,7 +24,7 @@ class ReturnController extends Controller
         }
 
         // delete your order
-        $order->delete();
+        Order::where('reference', $reference)->first()->delete();
 
         return redirect()
             ->action('IndexController@index')
