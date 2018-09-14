@@ -11,10 +11,11 @@ class CheckinController extends Controller
 
     public function index(Request $request, $reference)
     {
-        $order = Order::join('events', 'events.id', 'orders.event_id')
-            ->where('reference', $reference)
-            ->whereDate('start_at', '<=', Carbon::now())
-            ->first();
+        $order = Order::where('reference', $reference)->first();
+
+        if ($order->event->start_at > Carbon::now()) {
+            $order = null;
+        }
 
         if ($order && $order->status === Order::PAID) {
             $order->status = Order::CONFIRM;
