@@ -41,6 +41,8 @@ class PayController extends Controller
         if ($relatedReference && $relatedEvents) {
             $relatedOrder = Order::whereIn('event_id', json_decode($relatedEvents, true))
                 ->where('reference', $relatedReference)
+                ->whereIn('status', [Order::PAID, Order::CONFIRM])
+                ->where('email', $email)
                 ->first();
 
             if (!$relatedOrder) {
