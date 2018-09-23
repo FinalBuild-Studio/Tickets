@@ -38,6 +38,16 @@
                         </div>
                       </div>
                     </div>
+                    @if ($order->is_sponsor)
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <label for="invitation">邀請碼</label>
+                            <input required class="ticket_holder_email form-control" name="invitation" type="text" id="invitation">
+                          </div>
+                        </div>
+                      </div>
+                    @endif
                   </div>
                 </div>
               </div>

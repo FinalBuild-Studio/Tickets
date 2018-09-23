@@ -28,8 +28,13 @@ class PayController extends Controller
             ->lockForUpdate()
             ->firstOrFail();
 
-        $name  = $request->input('name');
-        $email = $request->input('email');
+        $name       = $request->input('name');
+        $email      = $request->input('email');
+        $invitation = $request->input('invitation');
+
+        if ($order->is_sponsor && $invitation != $order->event->invitation_code) {
+            throw new GeneralException(403, '請輸入正確的邀請碼');
+        }
 
         $oldOrder = Order::where('event_id', $order->event->id)
             ->where('email', $email)
