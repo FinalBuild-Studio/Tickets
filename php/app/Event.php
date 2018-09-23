@@ -22,6 +22,7 @@ class Event extends Model
         'discount_rate',
         'sponsor_tickets',
         'memo',
+        'invitation_code',
     ];
 
     protected $dates = [
