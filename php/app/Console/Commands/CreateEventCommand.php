@@ -52,7 +52,8 @@ class CreateEventCommand extends Command
     "poster": "",
     "discount_rate": 0,
     "sponsor_tickets": 0,
-    "invitation_code": ""
+    "invitation_code": "",
+    "related_event_ids": []
 }
 EOD;
         mkdir($templatePath, 0777, true);

@@ -52,6 +52,8 @@ class UpdateEventCommand extends Command
             $memo        = $mark->text($memo);
             $template    = basename($templatePath);
 
+            $information["related_event_ids"] = json_encode($information["related_event_ids"]);
+
             Event::where('template', $name)
                 ->update($information + compact('description', 'template', 'memo'));
             $this->info($template.' is updated');

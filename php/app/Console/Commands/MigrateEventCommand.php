@@ -51,6 +51,8 @@ class MigrateEventCommand extends Command
             $memo        = file_get_contents($templatePath.'/memo.md');
             $memo        = $mark->text($memo);
 
+            $information["related_event_ids"] = json_encode($information["related_event_ids"]);
+
             $template = basename($templatePath);
             if (!in_array($template, $templates)) {
                 Event::create($information + compact('description', 'template', 'memo'));

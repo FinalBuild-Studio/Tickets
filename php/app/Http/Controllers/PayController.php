@@ -28,12 +28,26 @@ class PayController extends Controller
             ->lockForUpdate()
             ->firstOrFail();
 
-        $name       = $request->input('name');
-        $email      = $request->input('email');
-        $invitation = $request->input('invitation');
+        $name             = $request->input('name');
+        $email            = $request->input('email');
+        $invitation       = $request->input('invitation');
+        $relatedReference = $request->input('reference');
 
         if ($order->is_sponsor && $invitation != $order->event->invitation_code) {
             throw new GeneralException(403, '請輸入正確的邀請碼');
+        }
+
+        $relatedEvents = $order->event->related_event_ids;
+        if ($relatedReference && $relatedEvents) {
+            $relatedOrder = Order::whereIn('event_id', json_decode($relatedEvents, true))
+                ->where('reference', $relatedReference)
+                ->first();
+
+            if (!$relatedOrder) {
+                throw new GeneralException(403, '找不到已報名資料');
+            }
+
+            $order->related_order_id = $relatedOrder->id;
         }
 
         $oldOrder = Order::where('event_id', $order->event->id)

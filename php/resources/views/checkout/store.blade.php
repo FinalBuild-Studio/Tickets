@@ -48,6 +48,16 @@
                         </div>
                       </div>
                     @endif
+                    @if ($order->event->related_event_ids)
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <label for="reference">報到序號</label>
+                            <input required class="ticket_holder_email form-control" name="reference" type="text" id="reference">
+                          </div>
+                        </div>
+                      </div>
+                    @endif
                   </div>
                 </div>
               </div>
