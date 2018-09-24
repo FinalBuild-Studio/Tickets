@@ -45,6 +45,11 @@ class Event extends Model
             ->sum('total');
     }
 
+    public function getRelatedEventIds($value)
+    {
+        return $value ? json_decode($value, true) : null;
+    }
+
     public function getExpiredAttribute()
     {
         return $this->start_at < new Carbon('-1 days');
