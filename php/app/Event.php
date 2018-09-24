@@ -45,7 +45,7 @@ class Event extends Model
             ->sum('total');
     }
 
-    public function getRelatedEventIds($value)
+    public function getRelatedEventIdsAttribute($value)
     {
         return $value ? json_decode($value, true) : null;
     }
