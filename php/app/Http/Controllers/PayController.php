@@ -39,7 +39,7 @@ class PayController extends Controller
 
         $relatedEvents = $order->event->related_event_ids;
         if ($relatedReference && $relatedEvents) {
-            $relatedOrder = Order::whereIn('event_id', $relatedEvents, true)
+            $relatedOrder = Order::whereIn('event_id', $relatedEvents)
                 ->where('reference', $relatedReference)
                 ->whereIn('status', [Order::PAID, Order::CONFIRM])
                 ->where('email', $email)
