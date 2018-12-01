@@ -11,7 +11,6 @@ services:
     volumes:
       - ./php:/src
   db:
-    container_name: tickets-db
     image: mariadb:10
     restart: always
     volumes:
